@@ -2,4 +2,4 @@
 - hosts: ios
   gather_facts: no
   roles:
-    - cisco_config_parser
+    - control-802.1x
