@@ -1,5 +1,5 @@
 ---
-- hosts: routers
+- hosts: ios
   gather_facts: no
   roles:
     - cisco_config_parser
