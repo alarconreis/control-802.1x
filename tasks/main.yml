@@ -1,18 +1,9 @@
 ---
 # tasks file for cisco_config_parser
 - block:
-
-  - name: SYS | Define provider
-    set_fact:
-      provider:
-        host: "{{ inventory_hostname }}"
-        username: "{{ mgmt_username }}"
-        password: "{{ mgmt_password }}"
-        port: 22
-        
   - name: run show running-config on device
     ios_command:
-      provider: "{{ provider }}"
+      authorize: yes
       commands:
         - show run
     register: print_output
