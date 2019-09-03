@@ -1,2 +1,2 @@
 [ios]
-BR-NSP-PT-SWA-00_001 ansible_host=10.11.31.5
+hostname ansible_host=1.1.1.1
