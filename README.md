@@ -3,5 +3,6 @@ Ansible to Audit Cisco 802.1x Cisco config
 
 # Important
 - Don't forget to fill the file group_vars/all with the username and password.
+- Don't forget to fill the file inventory with the hostnames and ips
 - Download the #ansible-network.network.engine# 
     command:  ansible-galaxy install -r roles/requirements.yml
