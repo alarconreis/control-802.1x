@@ -1,5 +1,7 @@
 # Control-802.1x
-Ansible code to audit Cisco 802.1x config
+Ansible code to audit Cisco 802.1x port configuration.
+- Connect to the device, generate the show running file and parse the content to the specific required information.
+- Read the result and save it in a html format.
 
 # Important
 - Don't forget to fill the file group_vars/all with the username and password for ssh connection.
