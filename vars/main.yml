@@ -4,3 +4,9 @@ vars_prompt:
     private: no
   - name: "mgmt_password"
     prompt: "Password"
+    
+provider:
+    host: "{{ inventory_hostname }}"
+    username: "{{ mgmt_username }}"
+    password: "{{ mgmt_password }}
+    port: 22
