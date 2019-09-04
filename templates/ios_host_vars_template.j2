@@ -1,23 +1,32 @@
----
-hostname: {{ios_hostname.matches.0}}
-{% if ios_net_interfaces is defined and ios_net_interfaces != None %}
-### interfaces ###
-interfaces:
-{% for interfaces in ios_net_interfaces%}
-{% if interfaces.name.matches[0] is defined and interfaces.name.matches[0] != None %}
-  - interface: {{interfaces.name.matches.0}}
-{% endif %}
-{% if interfaces.description.matches[0] is defined and interfaces.description.matches[0] != None %}
-    description: {{interfaces.description.matches[0] |regex_escape() }}
-{% endif %}
-{% if interfaces.shutdown.matches[0] is defined and interfaces.shutdown.matches[0] != None %}
-    shutdown: yes
-{% endif %}
-{% if interfaces.dot1x.matches[0] is defined and interfaces.dot1x.matches[0] != None %}
-    802.1x: yes
-{% endif %}
-{% if interfaces.portopen.matches[0] is defined and interfaces.portopen.matches[0] != None %}
-    Port_In_Open_State: yes
-{% endif %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>Interface</th>
+            <th>Description</th>
+            <th>Shutdown</th>
+            <th>802.1.x</th>
+            <th>OpenPort</th>
+        </tr>
+    </thead>
+    <tbody>
+
+{% for interfaces in ios_net_interfaces %}
+        <tr>
+                <td {%if interfaces.name.matches[0] != None %}{% endif %}>{{interfaces.name.matches}}</td>
+                <td {%if interfaces.description.matches[0] is defined and interfaces.description.matches[0] != None %}{% endif %}>{{interfaces.description.matches}}</td>
+                <td {%if interfaces.shutdown.matches[0] is defined and interfaces.shutdown.matches[0] != None  %}{% endif %}>{{interfaces.shutdown.matches}}</td>
+                <td {%if interfaces.dot1x.matches[0] is defined and interfaces.dot1x.matches[0] != None %}{% endif %}>{{interfaces.dot1x.matches}}</td>
+                <td {%if interfaces.portopen.matches[0] is defined and interfaces.portopen.matches[0] != None %}{% endif %}>{{interfaces.portopen.matches}}</td>
+        </tr>
 {% endfor %}
-{% endif %}
+    </tbody>
+</table>
+
+</body>
+</html>
