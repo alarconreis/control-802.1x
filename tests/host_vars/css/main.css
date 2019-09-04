@@ -67,3 +67,8 @@ tbody tr:last-child td {
 span.highlight {
     background-color: yellow;
 }
+
+h1 {
+  color: white;
+  font-size:22px;
+}
