@@ -8,6 +8,22 @@
 <table>
     <thead>
         <tr>
+            <th>Total Ports</th>
+            <th>Total 802.1x</th>
+            <th>Total Open State</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+                <td {%if count_totalports[0] != None %}{% endif %}> {{count_totalports |count}} </td>
+                <td {%if count_dot1x[0] != None %}{% endif %}> {{count_dot1x |count}} </td>
+                <td {%if count_open[0] != None %}{% endif %}> {{count_open |count}} </td>
+        </tr>
+     </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
             <th>Interface</th>
             <th>Description</th>
             <th>Shutdown</th>
@@ -28,6 +44,5 @@
 {% endfor %}
     </tbody>
 </table>
-
 </body>
 </html>
