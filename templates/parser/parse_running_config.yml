@@ -14,10 +14,31 @@
 ### interfaces ####
 - name: capture interface subsection per interface
   pattern_match:
-    regex: "!\\\n(interface [^!]+)\\\n" #    regex: "\\\ninterface ([^\\\n]+)([^!]+)"
+    regex: "!\\\n(interface [^!]+)\\\n"
     match_all: yes
   register: ios_net_interfaces_subset
   export: no
+
+- name: match dot1x_count
+  pattern_match:
+    regex: "authentication control-direction ([^\\\n]+)"
+    match_all: yes
+  register: count_dot1x
+  export: yes
+
+- name: match totalports_count
+  pattern_match:
+    regex: "interface ([^\\\n]+)"
+    match_all: yes
+  register: count_totalports
+  export: yes
+
+- name: match openport_count
+  pattern_match:
+    regex: "\\n (authentication open)\\n"
+    match_all: yes
+  register: count_open
+  export: yes
 
 - name: match interface values
   pattern_group:
@@ -47,9 +68,9 @@
 
     - name: match port open
       pattern_match:
-        regex: "authentication open ([^\\\n]+)"
+        regex: "\\n (authentication open)\\n"
         content: "{{ item.matches }}"
-      register: portopen        
+      register: portopen
 
   loop: "{{ ios_net_interfaces_subset }}"
   register: ios_net_interfaces
